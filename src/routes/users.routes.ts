@@ -2,7 +2,8 @@ import { Router } from "express";
 
 import { createUserController } from "../modules/users/useCases/createUser";
 import { listAllUsersController } from "../modules/users/useCases/listAllUsers";
-import { showUserProfileController } from "../modules/users/useCases/showUserProfile";
+import { showUserProfileByEmailController } from "../modules/users/useCases/showUserByEmailProfile";
+import { showUserProfileByIdController } from "../modules/users/useCases/showUserByIdProfile";
 import { turnUserAdminController } from "../modules/users/useCases/turnUserAdmin";
 
 const usersRoutes = Router();
@@ -16,7 +17,11 @@ usersRoutes.patch("/:user_id/admin", (request, response) =>
 );
 
 usersRoutes.get("/:user_id", (request, response) =>
-  showUserProfileController.handle(request, response)
+  showUserProfileByIdController.handle(request, response)
+);
+
+usersRoutes.get("/email/:email", (request, response) =>
+  showUserProfileByEmailController.handle(request, response)
 );
 
 usersRoutes.get("/", (request, response) =>

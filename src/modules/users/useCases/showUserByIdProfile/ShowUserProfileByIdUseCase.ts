@@ -5,7 +5,7 @@ interface IRequest {
   user_id: string;
 }
 
-class ShowUserProfileUseCase {
+class ShowUserProfileByIdUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User {
@@ -15,4 +15,4 @@ class ShowUserProfileUseCase {
   }
 }
 
-export { ShowUserProfileUseCase };
+export { ShowUserProfileByIdUseCase };
